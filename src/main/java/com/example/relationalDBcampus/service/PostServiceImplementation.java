@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
+@Service
 public class PostServiceImplementation implements PostService{
 
     @Autowired
@@ -26,7 +26,7 @@ public class PostServiceImplementation implements PostService{
 
     @Override
     public Post createComment(Comment comment) {
-        Post post = postRepository.findById(comment.getFK_post_id()).get();
+        Post post = postRepository.findById(comment.getFkPostId()).get();
         post.addComment(comment);
         commentRepository.save(comment);
         return postRepository.save(post);
